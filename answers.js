@@ -22,3 +22,7 @@ var restoreString = function (s, indices) {
     }
     return result.join("");
 };
+
+/*FONTAWESOME */
+
+// font awesome icons are a stored svg that cannot contain html elements
