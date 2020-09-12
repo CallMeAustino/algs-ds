@@ -27,3 +27,9 @@ var restoreString = function (s, indices) {
 
 // font awesome icons are a stored svg that cannot contain html elements
 // create a div component next to svg icon to get hoverable icon effect
+
+var reverse = function (x) {
+    let x_array = x.split("");
+};
+
+reverse(123);
