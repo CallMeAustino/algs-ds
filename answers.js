@@ -33,3 +33,11 @@ var reverse = function (x) {
 };
 
 reverse(123);
+
+/*Cracking the Coding Interview*/
+
+// 9 22 
+
+var eggDrop = function(x) {
+    
+};
