@@ -35,9 +35,20 @@ var reverse = function (x) {
 reverse(123);
 
 /*Cracking the Coding Interview*/
+/*Arrays and Strings*/
 
-// 9 22 
+    var uniqueChars = function (string) {
+        let seenChars = {};
+        let unique = true;
+        for (let i = 0; i < string.length; i++) {
+            console.log(string[i]);
+            if (seenChars[string[i]] === undefined) {
+                seenChars[string[i]] = 1;
+            } else {
+                unique = false;
+            }
+        }
+        return unique;
+    }
 
-var eggDrop = function(x) {
-    
-};
+
