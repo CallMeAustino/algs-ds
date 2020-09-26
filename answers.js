@@ -59,8 +59,9 @@ Then, lastly, if you make sure that the comparison returns immediately as soon a
     var isPermutation = function(string1, string2) {
         let table1 = {};
         let table2 = {};
+        let perm = true;
         if (string1.length != string2.length){
-            return false;
+            perm = false;
         }
         for(idx=0;idx<string1.length;idx++){
             if(table1[string1[idx]] === undefined){
@@ -74,15 +75,14 @@ Then, lastly, if you make sure that the comparison returns immediately as soon a
                 table2[string2[idx]] += 1;
             }
         }
-
-        if(table1.size !== table2.size){
-            return false;
-        }
-
-        Object.keys(table1);
+        Object.keys(table1).forEach(letter => {
+            if(table1[letter] !== table2[letter]){
+                perm = false;
+            }
+        })
+        console.log(perm);
     }
 
 
-    isPermutation("hello","olleh");
-
+isPermutation("hello","olleh");
 /*Testing push from Desktop PC*/
