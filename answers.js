@@ -86,3 +86,9 @@ Then, lastly, if you make sure that the comparison returns immediately as soon a
 
 isPermutation("hello","olleh");
 /*Testing push from Desktop PC*/
+
+/*Scalability*/
+
+/*vertical sharding,  horizontal sharding*/
+
+/*CDN, mem caching*/
