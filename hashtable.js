@@ -10,10 +10,18 @@ class HashTable {
 
     array = new Array(100);
     numItems = 0;
-    loadFactor = this.numItems / this.array.length;
+    
 
     resize = () => {
-
+        const newArray = new Array(array.length * 2);
+        this.array.forEach(bucket => {
+            if (bucket) {
+                bucket.forEach(([key, value]) => {
+                    const idx = hashStringToInt(key, newArray.length);
+                    newArray[idx] = value;
+                });
+            }
+        });
     }
 
     getItem = (key) => {
@@ -26,7 +34,8 @@ class HashTable {
 
     setItem = (key, value) => {
         this.numItems++;
-        if(this.loadFactor > .8){
+        const loadFactor = this.numItems / this.array.length;
+        if(loadFactor > .8){
             this.resize();
         }
         const idx = hashStringToInt(key, this.array.length);
