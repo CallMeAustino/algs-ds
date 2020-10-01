@@ -8,20 +8,25 @@ function hashStringToInt(s, tableSize){
 
 class HashTable {
 
-    array = new Array(100);
+    array = new Array(3);
     numItems = 0;
     
 
     resize = () => {
-        const newArray = new Array(array.length * 2);
+        const newArray = new Array(this.array.length * 2);
         this.array.forEach(bucket => {
             if (bucket) {
                 bucket.forEach(([key, value]) => {
                     const idx = hashStringToInt(key, newArray.length);
-                    newArray[idx] = value;
+                    if (newArray[idx]){
+                        newArray[idx].push([key, value]);
+                    } else {
+                        newArray[idx] = [[key, value]];
+                    }
                 });
             }
         });
+        this.array = newArray;
     }
 
     getItem = (key) => {
@@ -39,10 +44,10 @@ class HashTable {
             this.resize();
         }
         const idx = hashStringToInt(key, this.array.length);
-        if (!this.array[idx]){
-            this.array[idx] = [[key, value]];
+        if (this.array[idx]){
+            this.array[idx].push([key, value]);
         } else {
-            this.array.push([key, value]);
+            this.array[idx] = [[key, value]];
         }
     }
 
@@ -50,9 +55,13 @@ class HashTable {
 
 const myTable = new HashTable();
 myTable.setItem("first","Austin");
-myTable.setItem("last","Wong");
-myTable.getItem("name");
+myTable.setItem("middle","Wong");
+console.log(myTable.array.length);
+myTable.setItem("age",6);
+myTable.setItem("DOB","November 12th");
+console.log(myTable.array.length);
+console.log(myTable.array);
 console.log(myTable.getItem("first"));
-console.log(myTable.getItem("last"));
+console.log(myTable.getItem("middle"));
 
 
