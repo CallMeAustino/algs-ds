@@ -9,15 +9,32 @@ function hashStringToInt(s, tableSize){
 class HashTable {
 
     array = new Array(100);
+    numItems = 0;
+    loadFactor = this.numItems / this.array.length;
+
+    resize = () => {
+
+    }
 
     getItem = (key) => {
         const idx = hashStringToInt(key, this.array.length);
-        return this.array[idx];
+        if (!this.array[idx]){
+            return null;
+        }
+        return this.array[idx].find(x => x[0] === key)[1];
     }
 
     setItem = (key, value) => {
+        this.numItems++;
+        if(this.loadFactor > .8){
+            this.resize();
+        }
         const idx = hashStringToInt(key, this.array.length);
-        this.array[idx] = value;
+        if (!this.array[idx]){
+            this.array[idx] = [[key, value]];
+        } else {
+            this.array.push([key, value]);
+        }
     }
 
 }
@@ -28,6 +45,5 @@ myTable.setItem("last","Wong");
 myTable.getItem("name");
 console.log(myTable.getItem("first"));
 console.log(myTable.getItem("last"));
-console.log("test");
 
 
