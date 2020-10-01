@@ -28,5 +28,6 @@ myTable.setItem("last","Wong");
 myTable.getItem("name");
 console.log(myTable.getItem("first"));
 console.log(myTable.getItem("last"));
+console.log("test");
 
 
