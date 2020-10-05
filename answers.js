@@ -92,3 +92,21 @@ isPermutation("hello","olleh");
 /*vertical sharding,  horizontal sharding*/
 
 /*CDN, mem caching*/
+
+/*URLify*/
+
+let URLify = function(string){
+    let array = string.trim().split("");
+    let url = [];
+    for(let i = 0; i < string.length; i++){
+      if(array[i] === " " && array[i-1] !== " "){
+        url.push("%20");
+      } else {
+        url.push(array[i]);
+      }
+    }
+    return url.join("");
+  }
+  
+  URLify("hello world   ");
+  

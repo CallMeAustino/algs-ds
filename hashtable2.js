@@ -10,7 +10,6 @@ class HashTable {
 
     array = new Array(3);
     numItems = 0;
-    
 
     resize = () => {
         const newArray = new Array(this.array.length * 2);
@@ -40,8 +39,8 @@ class HashTable {
     setItem = (key, value) => {
         this.numItems++;
         const loadFactor = this.numItems / this.array.length;
-        if(loadFactor > .8){
-            this.resize();
+        if (loadFactor > .8){
+            resize();
         }
         const idx = hashStringToInt(key, this.array.length);
         if (this.array[idx]){
@@ -50,5 +49,10 @@ class HashTable {
             this.array[idx] = [[key, value]];
         }
     }
-
 }
+
+let table = new HashTable; //instance of HashTable class
+table.setItem("keya","verycute");
+console.log(table.getItem("keya"));
+
+/* [ [[kelly, lesscute]], [[keya, verycute],[austin, cutest]] , [[eva, notcute]] ]*/
