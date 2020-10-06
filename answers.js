@@ -110,3 +110,23 @@ let URLify = function(string){
   
   URLify("hello world   ");
   
+
+  /*palindrome*/ 
+
+  let PalindromePerm = function(s){
+    s = s.replace(/\s/g, '').toLowerCase();
+    let hash = {};
+    for(let i = 0; i < s.length; i++){
+      if(hash[s[i]] === undefined){
+        hash[s[i]] = 1;
+      } else {
+        delete hash[s[i]];
+      }
+    }
+    if(s.length % 2 !== 0){
+      return(Object.keys(hash).length === 1);
+  } else {
+      return(Object.keys(hash).length === 0);
+  }
+  }
+  
